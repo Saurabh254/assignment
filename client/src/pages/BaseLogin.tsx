@@ -1,7 +1,7 @@
 import axios from "axios";
 import LoginPage from "../components/Login";
 
-import { Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config";
 
 const BaseLogin: React.FC = () => {
