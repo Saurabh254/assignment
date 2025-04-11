@@ -1,43 +1,123 @@
 const express = require('express');
 const router = express.Router();
 const Exam = require('../models/Exam');
+const User = require('../models/User');
 const auth = require('../middleware/auth');
 
-// Create new exam (Teacher only)
+/**
+ * @swagger
+ * /api/v1/exam:
+ *   post:
+ *     summary: Create a new exam (Teacher only)
+ *     tags: [Exam]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - subject
+ *               - duration
+ *             properties:
+ *               title:
+ *                 type: string
+ *               subject:
+ *                 type: string
+ *               duration:
+ *                 type: integer
+ *               questions:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *     responses:
+ *       201:
+ *         description: Exam created successfully
+ *       403:
+ *         description: Only teachers can create exams
+ *       500:
+ *         description: Server error
+ */
 router.post('/', auth, async (req, res) => {
     try {
         if (req.user.role !== 'teacher') {
             return res.status(403).json({ message: 'Only teachers can create exams' });
         }
 
-        const exam = new Exam({
+        const exam = await Exam.create({
             ...req.body,
-            teacher: req.user.userId
+            teacherId: req.user.userId
         });
 
-        await exam.save();
         res.status(201).json(exam);
     } catch (error) {
         res.status(500).json({ message: 'Error creating exam', error: error.message });
     }
 });
 
-// Get all exams
+/**
+ * @swagger
+ * /api/v1/exam:
+ *   get:
+ *     summary: Get all exams
+ *     tags: [Exam]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of exams
+ *       500:
+ *         description: Server error
+ */
 router.get('/', auth, async (req, res) => {
     try {
-        const exams = await Exam.find()
-            .populate('teacher', 'name');
+        const exams = await Exam.findAll({
+            include: [{
+                model: User,
+                as: 'teacher',
+                attributes: ['name']
+            }]
+        });
         res.json(exams);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching exams', error: error.message });
     }
 });
 
-// Get exam by ID
+/**
+ * @swagger
+ * /api/v1/exam/{id}:
+ *   get:
+ *     summary: Get exam by ID
+ *     tags: [Exam]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Exam details
+ *       404:
+ *         description: Exam not found
+ *       500:
+ *         description: Server error
+ */
 router.get('/:id', auth, async (req, res) => {
     try {
-        const exam = await Exam.findById(req.params.id)
-            .populate('teacher', 'name');
+        const exam = await Exam.findByPk(req.params.id, {
+            include: [{
+                model: User,
+                as: 'teacher',
+                attributes: ['name']
+            }]
+        });
 
         if (!exam) {
             return res.status(404).json({ message: 'Exam not found' });

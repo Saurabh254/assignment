@@ -2,9 +2,48 @@ const express = require('express');
 const router = express.Router();
 const Result = require('../models/Result');
 const Exam = require('../models/Exam');
+const User = require('../models/User');
 const auth = require('../middleware/auth');
 
-// Submit exam result
+/**
+ * @swagger
+ * /api/v1/result:
+ *   post:
+ *     summary: Submit exam result (Student only)
+ *     tags: [Result]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - examId
+ *               - answers
+ *               - timeTaken
+ *             properties:
+ *               examId:
+ *                 type: string
+ *               answers:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               timeTaken:
+ *                 type: array
+ *                 items:
+ *                   type: number
+ *     responses:
+ *       201:
+ *         description: Result submitted successfully
+ *       403:
+ *         description: Only students can submit exam results
+ *       404:
+ *         description: Exam not found
+ *       500:
+ *         description: Server error
+ */
 router.post('/', auth, async (req, res) => {
     try {
         if (req.user.role !== 'student') {
@@ -12,7 +51,7 @@ router.post('/', auth, async (req, res) => {
         }
 
         const { examId, answers, timeTaken } = req.body;
-        const exam = await Exam.findById(examId);
+        const exam = await Exam.findByPk(examId);
 
         if (!exam) {
             return res.status(404).json({ message: 'Exam not found' });
@@ -34,7 +73,7 @@ router.post('/', auth, async (req, res) => {
             }
 
             questionResults.push({
-                question: question._id,
+                questionId: question.id,
                 userAnswer,
                 isCorrect,
                 timeTaken: timeTaken[i]
@@ -49,32 +88,59 @@ router.post('/', auth, async (req, res) => {
                 score: score / exam.questions.filter(q => q.topic === topic).length
             }));
 
-        const result = new Result({
-            student: req.user.userId,
-            exam: examId,
+        // Create result
+        const result = await Result.create({
+            examId,
+            studentId: req.user.userId,
             score,
             questionResults,
             weakTopics,
-            timeTaken: timeTaken.reduce((a, b) => a + b, 0)
+            totalTime: timeTaken.reduce((a, b) => a + b, 0)
         });
 
-        await result.save();
         res.status(201).json(result);
     } catch (error) {
         res.status(500).json({ message: 'Error submitting result', error: error.message });
     }
 });
 
-// Get student's results
-router.get('/student', auth, async (req, res) => {
+/**
+ * @swagger
+ * /api/v1/result/student/{studentId}:
+ *   get:
+ *     summary: Get results for a student
+ *     tags: [Result]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: studentId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: List of student results
+ *       403:
+ *         description: Not authorized to view these results
+ *       500:
+ *         description: Server error
+ */
+router.get('/student/:studentId', auth, async (req, res) => {
     try {
-        if (req.user.role !== 'student') {
-            return res.status(403).json({ message: 'Only students can view their results' });
+        // Only allow teachers or the student themselves to view results
+        if (req.user.role !== 'teacher' && req.user.userId !== req.params.studentId) {
+            return res.status(403).json({ message: 'Not authorized to view these results' });
         }
 
-        const results = await Result.find({ student: req.user.userId })
-            .populate('exam', 'title subject')
-            .sort('-createdAt');
+        const results = await Result.findAll({
+            where: { studentId: req.params.studentId },
+            include: [{
+                model: Exam,
+                as: 'exam',
+                attributes: ['title', 'subject']
+            }]
+        });
 
         res.json(results);
     } catch (error) {

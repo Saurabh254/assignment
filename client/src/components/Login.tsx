@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage: React.FC<{
   handleLogin: (username: string, password: string) => void;
 }> = ({ handleLogin }) => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   return (
@@ -15,7 +17,7 @@ const LoginPage: React.FC<{
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Teacher Login
+            Login to Continue
           </h2>
         </div>
 
@@ -80,6 +82,15 @@ const LoginPage: React.FC<{
             >
               Sign in
             </button>
+          </div>
+          <div className="mt-8 text-center  w-full">
+            new user?
+            <span
+              className="text-indigo-800 ml-2 font-semibold text-sm text-center cursor-pointer hover:font-bold"
+              onClick={() => navigate("/register")}
+            >
+              Create Registration
+            </span>
           </div>
         </div>
       </div>
