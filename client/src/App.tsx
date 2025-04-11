@@ -1,12 +1,18 @@
-import { useState } from "react";
-import "./App.css";
+// src/App.tsx
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import TeacherLogin from "./pages/Teacher";
+import UserLogin from "./pages/User"; // Assuming you have a User component
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <span>saurabh</span>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/teacher" element={<TeacherLogin />} />
+        <Route path="/user" element={<UserLogin />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
