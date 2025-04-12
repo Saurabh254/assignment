@@ -1,0 +1,13 @@
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-12 13:18:39"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-12 13:18:39"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-12 13:18:39"}
+{"level":"info","message":"Attempting user login","rollNumber":"dereference","service":"exam-portal-api","timestamp":"2025-04-12 13:19:01"}
+{"level":"info","message":"User logged in successfully","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-12 13:19:01","userId":"3871d153-4941-48fd-9be2-a179fc7fb4f9"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [12/Apr/2025:07:49:01 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 392 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-12 13:19:01"}
+{"level":"info","message":"Attempting user login","rollNumber":"dereference","service":"exam-portal-api","timestamp":"2025-04-12 13:19:26"}
+{"level":"info","message":"User logged in successfully","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-12 13:19:26","userId":"3871d153-4941-48fd-9be2-a179fc7fb4f9"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [12/Apr/2025:07:49:26 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 392 \"http://localhost:5173/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-12 13:19:26"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-12 13:23:01"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-12 13:23:01"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-12 13:23:01"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [12/Apr/2025:09:37:29 +0000] \"POST /api/v1/exams HTTP/1.1\" 400 570 \"http://localhost:5173/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-12 15:07:29"}

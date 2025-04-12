@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("student")
+  class     String?
+  rollNumber String? @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  createdExams Exam[]        @relation("CreatedExams")
+  examResults  ExamResult[]
+}
+
+model Exam {
+  id          String   @id @default(uuid())
+  title       String
+  subject     String
+  description String?
+  duration    Int      // in minutes
+  totalMarks  Int
+  date        DateTime
+  startTime   String
+  endTime     String
+  class       String
+  status      String   @default("upcoming")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  createdBy   User         @relation("CreatedExams", fields: [createdById], references: [id])
+  createdById String
+  results     ExamResult[]
+}
+
+model ExamResult {
+  id          String   @id @default(uuid())
+  score       Int
+  totalMarks  Int
+  percentage  Float
+  grade       String
+  status      String
+  feedback    String?
+  submittedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  exam        Exam   @relation(fields: [examId], references: [id])
+  examId      String
+  student     User   @relation(fields: [studentId], references: [id])
+  studentId   String
+}

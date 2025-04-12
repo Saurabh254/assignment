@@ -1,12 +1,34 @@
-import React, { useState } from "react";
-import { Question } from "../types"; // Adjust path as needed
-const CreateQuestion = () => {
+import React, { useState, useEffect } from "react";
+import { Question } from "../types";
+
+interface CreateQuestionProps {
+  question?: Question;
+  onSubmit: (question: Question) => void;
+}
+
+const CreateQuestion: React.FC<CreateQuestionProps> = ({
+  question,
+  onSubmit,
+}) => {
   const [formData, setFormData] = useState<Question>({
     id: "",
     question: "",
-    options: ["", "", "", ""], // Initialize with 4 empty options
+    options: ["", "", "", ""],
     correctAnswer: 0,
   });
+
+  useEffect(() => {
+    if (question) {
+      setFormData(question);
+    } else {
+      setFormData({
+        id: "",
+        question: "",
+        options: ["", "", "", ""],
+        correctAnswer: 0,
+      });
+    }
+  }, [question]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -23,18 +45,20 @@ const CreateQuestion = () => {
     }
   };
 
-  const handleCorrectAnswerChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFormData({ ...formData, correctAnswer: Number(e.target.value) });
+  const handleCorrectAnswerChange = (value: string) => {
+    setFormData({ ...formData, correctAnswer: Number(value) });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Generate a unique ID (simple example, consider UUID in production)
-    const newQuestion = { ...formData, id: Date.now().toString() };
-    console.log("Submitted Question:", newQuestion);
-    // Reset form
+    const newQuestion = {
+      ...formData,
+      id: formData.id || Date.now().toString(),
+    };
+    onSubmit(newQuestion);
+  };
+
+  const handleClear = () => {
     setFormData({
       id: "",
       question: "",
@@ -45,11 +69,13 @@ const CreateQuestion = () => {
 
   return (
     <div className="w-full mx-auto p-6">
-      <form onSubmit={handleSubmit} className=" p-6">
-        <h2 className="text-2xl font-bold mb-6">Create a New Question</h2>
+      <form onSubmit={handleSubmit} className="p-6">
+        <h2 className="text-2xl font-bold mb-6">
+          {question ? "Edit Question" : "Create a New Question"}
+        </h2>
 
         {/* Question Text */}
-        <div className="form-control mb-4 flex flex-col  w-full">
+        <div className="form-control mb-4 flex flex-col w-full">
           <label className="label">
             <span className="label-text font-semibold">Question</span>
           </label>
@@ -62,13 +88,14 @@ const CreateQuestion = () => {
             required
           />
         </div>
+
         <span className="flex font-semibold py-4">Options</span>
         {/* Options */}
         <div className="flex justify-evenly">
           {formData.options.map((option, index) => (
             <div key={index} className="form-control mb-4 flex gap-2">
               <label className="label">
-                <span className="label-text"> {index + 1}. </span>
+                <span className="label-text">{index + 1}.</span>
               </label>
               <input
                 type="text"
@@ -82,6 +109,7 @@ const CreateQuestion = () => {
             </div>
           ))}
         </div>
+
         {/* Correct Answer Selection */}
         <div className="form-control mb-6 mt-8">
           <label className="label">
@@ -95,22 +123,27 @@ const CreateQuestion = () => {
                   name="correctAnswer"
                   value={index}
                   checked={formData.correctAnswer === index}
-                  onChange={handleCorrectAnswerChange}
-                  className="checkbox checked:text-black border-1 border-slate-300 "
+                  onChange={(e) => handleCorrectAnswerChange(e.target.value)}
+                  className="checkbox checked:text-black border-1 border-slate-300"
                   required
                 />
                 <span>Option {index + 1}</span>
               </label>
             ))}
           </div>
-          {/* Submit Button */}
         </div>
+
+        {/* Buttons */}
         <div className="flex items-center gap-4">
-          <button type="submit" className="btn btn-error w-fit">
+          <button
+            type="button"
+            onClick={handleClear}
+            className="btn btn-error w-fit"
+          >
             Clear
           </button>
           <button type="submit" className="btn btn-primary w-fit">
-            Submit Question
+            {question ? "Update Question" : "Submit Question"}
           </button>
         </div>
       </form>
