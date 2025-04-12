@@ -6,12 +6,19 @@ import BaseLogin from "./pages/BaseLogin";
 import BaseRegister from "./pages/BaseRegister";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import Students from "./components/Students";
-import CreateExam from "./components/CreateExam";
+import CreateExam from "./pages/CreateExam";
+import MyExams from "./pages/MyExams";
+import Results from "./pages/Results";
+import Profile from "./pages/Profile";
+
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
         <Route path="/user" element={<UserDashboard />} />
+        <Route path="/user/exams" element={<MyExams />} />
+        <Route path="/user/results" element={<Results />} />
+        <Route path="/user/profile" element={<Profile />} />
         <Route path="/teacher" element={<TeacherDashboard />} />
         <Route path="/create-exam" element={<CreateExam />} />
         <Route path="/students/all" element={<Students />} />

@@ -8,15 +8,21 @@ interface RegisterProps {
     password: string;
     role: string;
   }) => Promise<void>;
+  error?: string | null;
+  loading?: boolean;
 }
 
-const Register = ({ handleRegistration }: RegisterProps) => {
+const Register = ({
+  handleRegistration,
+  error,
+  loading = false,
+}: RegisterProps) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     username: "",
     password: "",
-    role: "teacher",
+    role: "student",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -47,6 +53,12 @@ const Register = ({ handleRegistration }: RegisterProps) => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-6" autoComplete="off">
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900">
@@ -66,12 +78,12 @@ const Register = ({ handleRegistration }: RegisterProps) => {
 
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900">
-              Username
+              Roll Number
             </label>
             <div className="mt-2">
               <input
                 type="text"
-                name="usr"
+                name="username"
                 value={formData.username}
                 onChange={handleChange}
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -88,7 +100,7 @@ const Register = ({ handleRegistration }: RegisterProps) => {
             <div className="mt-2">
               <input
                 type="password"
-                name="psd"
+                name="password"
                 value={formData.password}
                 onChange={handleChange}
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -109,29 +121,32 @@ const Register = ({ handleRegistration }: RegisterProps) => {
                 onChange={handleChange}
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
               >
-                <option value="teacher">Teacher</option>
                 <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
               </select>
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Register
-          </button>
+          <div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              {loading ? "Registering..." : "Register"}
+            </button>
+          </div>
         </form>
 
-        <p className="mt-10 text-center text-sm text-gray-500">
-          Already have an account?{" "}
+        <div className="mt-8 text-center w-full">
+          Already have an account?
           <span
+            className="text-indigo-800 ml-2 font-semibold text-sm text-center cursor-pointer hover:font-bold"
             onClick={() => navigate("/login")}
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer"
           >
-            Login here
+            Sign in
           </span>
-        </p>
+        </div>
       </div>
     </div>
   );

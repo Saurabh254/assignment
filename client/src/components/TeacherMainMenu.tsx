@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 export default function TeacherMainMenu() {
   return (
     <>
-      <div className=" bg-[#e9ecf6] p-8 rounded-lg w-full">
-        <span className="menu-title text-xl font-semibold mb-6 block">
+      <div className=" bg-[#e9ecf6] text-black tex p-8 rounded-lg w-full">
+        <span className="menu-title text-black text-xl font-semibold mb-6 block">
           Main Menu
         </span>
 
         <div className="border-1 border-gray-300 mb-6"></div>
-        <ul className="menu bg-base-200 rounded-box items-center justify-evenly w-full [&>*]:px-8 flex gap-2 ">
+        <ul className="menu rounded-box items-center justify-evenly w-full [&>*]:px-8 flex flex-row gap-2 ">
           <li>
             <Link
               to="/create-exam"
