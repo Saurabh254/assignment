@@ -1,21 +1,6 @@
 import React from "react";
 import { Question } from "../types";
-import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
-
-interface ExamDetailsProps {
-  examTitle: string;
-  setExamTitle: (title: string) => void;
-  examDescription: string;
-  setExamDescription: (description: string) => void;
-  examDuration: number;
-  setExamDuration: (duration: number) => void;
-  totalMarks: number;
-  setTotalMarks: (marks: number) => void;
-  startTime: string;
-  setStartTime: (time: string) => void;
-  endTime: string;
-  setEndTime: (time: string) => void;
-}
+import { RiArrowLeftLine } from "@remixicon/react";
 
 interface ListItemProps {
   index: number;
@@ -122,16 +107,29 @@ const CreateExamSidebar: React.FC<CreateExamSidebarProps> = ({
     }
   };
 
+  const handleQuestionAdd = () => {
+    // Logic to add a new question
+    onQuestionSelect(-1); // Reset selection to allow for new question entry
+  };
+
+  const handleClear = () => {
+    // Logic to clear the current question form
+    setExamTitle("");
+    setExamDescription("");
+    setExamDuration(60);
+    setTotalMarks(100);
+    setStartTime("");
+    setEndTime("");
+    setQuestions([]); // Clear all questions if needed
+  };
+
   return (
     <div className="text-black w-78">
       <span className="flex items-center gap-8 p-4 pt-8">
         <RiArrowLeftLine /> Create Exam
       </span>
-      <div className="pt-4 px-4 font-semibold flex items-center justify-between">
-        Exam Details <RiArrowRightLine className="cursor-pointer" />
-      </div>
       <div className="divider border-t-2 border-gray-300"></div>
-      <span className="p-4 pt-0 block">Questions</span>
+      <span className="p-4 block">Questions</span>
       <div className="flex flex-col gap-2">
         {questions.map((question, index) => (
           <ListItem
@@ -144,8 +142,11 @@ const CreateExamSidebar: React.FC<CreateExamSidebarProps> = ({
         ))}
       </div>
       <div className="p-4">
-        <button onClick={onSubmit} className="btn btn-primary w-full">
+        <button onClick={handleQuestionAdd} className="btn btn-primary w-full">
           Add Question
+        </button>
+        <button onClick={handleClear} className="btn btn-error w-full mt-2">
+          Clear
         </button>
       </div>
     </div>
