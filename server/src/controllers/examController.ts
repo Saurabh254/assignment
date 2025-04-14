@@ -17,12 +17,12 @@ const createExamSchema = z.object({
     description: z.string().min(10).max(500),
     duration: z.number().int().min(1).max(180),
     totalMarks: z.number().int().min(1),
-    startTime: z.string().datetime(),
-    endTime: z.string().datetime(),
+    date: z.string().datetime(),
+    subject: z.string(),
     questions: z.array(z.object({
         question: z.string().min(10),
-        options: z.array(z.string().min(1)).min(2),
-        correctAnswer: z.number().int().min(0)
+        options: z.array(z.string().min(1)).min(4),
+        correctAnswer: z.number().int().min(0).max(3)
     })).min(1)
 });
 
@@ -39,8 +39,10 @@ export const getExams = async (req: Request, res: Response) => {
                 description: true,
                 duration: true,
                 totalMarks: true,
-                startTime: true,
-                endTime: true,
+                class: true,
+                subject: true,
+                status: true,
+                startDateTime: true,
                 createdAt: true
             }
         });
@@ -59,15 +61,7 @@ export const getExamById = async (req: Request, res: Response) => {
 
         const exam = await prisma.exam.findUnique({
             where: { id },
-            include: {
-                questions: {
-                    select: {
-                        id: true,
-                        question: true,
-                        options: true
-                    }
-                }
-            }
+
         });
 
         if (!exam) {
@@ -86,34 +80,24 @@ export const createExam = async (req: Request, res: Response) => {
     try {
         const validatedData = createExamSchema.parse(req.body);
 
-        // Create exam with questions in a transaction
-        const exam = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
-            // Create the exam
-            const newExam = await tx.exam.create({
-                data: {
-                    title: validatedData.title,
-                    description: validatedData.description,
-                    duration: validatedData.duration,
-                    totalMarks: validatedData.totalMarks,
-                    startTime: new Date(validatedData.startTime),
-                    endTime: new Date(validatedData.endTime)
-                }
-            });
-
-            // Create questions for the exam
-            await tx.question.createMany({
-                data: validatedData.questions.map((q: QuestionInput) => ({
-                    examId: newExam.id,
-                    question: q.question,
-                    options: q.options,
-                    correctAnswer: q.correctAnswer
-                }))
-            });
-
-            return newExam;
+        // Create exam
+        const exam = await prisma.exam.create({
+            data: {
+                title: validatedData.title,
+                description: validatedData.description,
+                duration: validatedData.duration,
+                totalMarks: validatedData.totalMarks,
+                startDateTime: new Date(validatedData.date),
+                class: '10th', // Assuming class is hardcoded for now
+                status: 'upcoming',
+                createdById: req.user.id, // Assuming user ID is attached by auth middleware
+                subject: validatedData.subject,
+                questions: validatedData.questions
+            }
         });
 
-        return res.status(201).json(exam);
+        const resp = res.status(201).json(exam);
+
     } catch (error: unknown) {
         if (error instanceof z.ZodError) {
             return res.status(400).json({ error: error.errors });
@@ -122,13 +106,11 @@ export const createExam = async (req: Request, res: Response) => {
         return res.status(500).json({ error: 'Internal server error' });
     }
 };
-
 // Submit exam answers
 export const submitExam = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const userId = req.user?.id;
-
         if (!userId) {
             return res.status(401).json({ error: 'Unauthorized' });
         }
@@ -136,24 +118,15 @@ export const submitExam = async (req: Request, res: Response) => {
         // Validate request body
         const submitSchema = z.object({
             answers: z.array(z.object({
-                questionId: z.string(),
+                questionIndex: z.number().int().min(0),
                 answer: z.number().int().min(0)
             }))
         });
-
         const { answers } = submitSchema.parse(req.body);
 
-        // Get the exam and its questions
+        // Get the exam with questions stored as JSON
         const exam = await prisma.exam.findUnique({
-            where: { id },
-            include: {
-                questions: {
-                    select: {
-                        id: true,
-                        correctAnswer: true
-                    }
-                }
-            }
+            where: { id }
         });
 
         if (!exam) {
@@ -172,13 +145,13 @@ export const submitExam = async (req: Request, res: Response) => {
             return res.status(400).json({ error: 'Exam already submitted' });
         }
 
+        // Parse questions from the JSON field
+        const questions = exam.questions as any[] || [];
+
         // Calculate score
         let score = 0;
-        type Question = { id: string; correctAnswer: number };
-        const questionMap = new Map<string, Question>(exam.questions.map((q: Question) => [q.id, q]));
-
         for (const answer of answers) {
-            const question = questionMap.get(answer.questionId);
+            const question = questions[answer.questionIndex];
             if (question && question.correctAnswer === answer.answer) {
                 score++;
             }
@@ -190,17 +163,16 @@ export const submitExam = async (req: Request, res: Response) => {
                 examId: id,
                 userId: userId,
                 score: score,
-                totalMarks: exam.questions.length,
+                totalMarks: questions.length,
                 answers: answers
             }
         });
 
         // Calculate percentage
-        const percentage = (score / exam.questions.length) * 100;
-
+        const percentage = (score / questions.length) * 100;
         return res.json({
             score,
-            totalMarks: exam.questions.length,
+            totalMarks: questions.length,
             percentage: percentage.toFixed(2)
         });
     } catch (error: unknown) {
@@ -223,12 +195,12 @@ export const getStudentExams = async (req: Request, res: Response) => {
             where: {
                 class: studentClass,
                 status: 'upcoming',
-                date: {
+                startDateTime: {
                     gte: new Date(),
                 },
             },
             orderBy: {
-                date: 'asc',
+                startDateTime: 'asc',
             },
         });
 
@@ -246,7 +218,7 @@ export const getStudentExams = async (req: Request, res: Response) => {
                 },
             },
             orderBy: {
-                date: 'desc',
+                startDateTime: 'desc',
             },
         });
 

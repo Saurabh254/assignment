@@ -1,12 +1,12 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
-    "role" TEXT NOT NULL DEFAULT 'student',
-    "class" TEXT,
-    "rollNumber" TEXT,
+    "id" STRING NOT NULL,
+    "name" STRING NOT NULL,
+    "email" STRING NOT NULL,
+    "password" STRING NOT NULL,
+    "role" STRING NOT NULL DEFAULT 'student',
+    "class" STRING,
+    "rollNumber" STRING,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -15,44 +15,47 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "Exam" (
-    "id" TEXT NOT NULL,
-    "title" TEXT NOT NULL,
-    "subject" TEXT NOT NULL,
-    "description" TEXT,
-    "duration" INTEGER NOT NULL,
-    "totalMarks" INTEGER NOT NULL,
+    "id" STRING NOT NULL,
+    "title" STRING NOT NULL,
+    "subject" STRING NOT NULL,
+    "description" STRING,
+    "duration" INT4 NOT NULL,
+    "totalMarks" INT4 NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
-    "startTime" TEXT NOT NULL,
-    "endTime" TEXT NOT NULL,
-    "class" TEXT NOT NULL,
-    "status" TEXT NOT NULL DEFAULT 'upcoming',
+    "startTime" STRING NOT NULL,
+    "endTime" STRING NOT NULL,
+    "class" STRING NOT NULL,
+    "status" STRING NOT NULL DEFAULT 'upcoming',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "createdById" TEXT NOT NULL,
+    "createdById" STRING NOT NULL,
 
     CONSTRAINT "Exam_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "ExamResult" (
-    "id" TEXT NOT NULL,
-    "score" INTEGER NOT NULL,
-    "totalMarks" INTEGER NOT NULL,
-    "percentage" DOUBLE PRECISION NOT NULL,
-    "grade" TEXT NOT NULL,
-    "status" TEXT NOT NULL,
-    "feedback" TEXT,
+    "id" STRING NOT NULL,
+    "score" INT4 NOT NULL,
+    "totalMarks" INT4 NOT NULL,
+    "percentage" FLOAT8 NOT NULL,
+    "grade" STRING NOT NULL,
+    "status" STRING NOT NULL,
+    "feedback" STRING,
     "submittedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "examId" TEXT NOT NULL,
-    "studentId" TEXT NOT NULL,
+    "examId" STRING NOT NULL,
+    "studentId" STRING NOT NULL,
 
     CONSTRAINT "ExamResult_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_rollNumber_key" ON "User"("rollNumber");
 
 -- AddForeignKey
 ALTER TABLE "Exam" ADD CONSTRAINT "Exam_createdById_fkey" FOREIGN KEY ("createdById") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

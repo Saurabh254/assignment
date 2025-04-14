@@ -11,3 +11,170 @@
 {"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-12 13:23:01"}
 {"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-12 13:23:01"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [12/Apr/2025:09:37:29 +0000] \"POST /api/v1/exams HTTP/1.1\" 400 570 \"http://localhost:5173/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-12 15:07:29"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 11:13:53"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 11:13:53"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 11:13:53"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:43:59 +0000] \"GET /api-docs HTTP/1.1\" 301 158 \"-\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:13:59"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:43:59 +0000] \"GET /api-docs/ HTTP/1.1\" 200 3106 \"-\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:13:59"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:43:59 +0000] \"GET /api-docs/swagger-ui-init.js HTTP/1.1\" 200 30859 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:13:59"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:43:59 +0000] \"GET /api-docs/swagger-ui.css HTTP/1.1\" 304 - \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:13:59"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:43:59 +0000] \"GET /api-docs/swagger-ui-bundle.js HTTP/1.1\" 304 - \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:13:59"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:43:59 +0000] \"GET /api-docs/swagger-ui-standalone-preset.js HTTP/1.1\" 304 - \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:13:59"}
+{"level":"info","message":"Attempting user login","rollNumber":"string","service":"exam-portal-api","timestamp":"2025-04-14 11:19:57"}
+{"level":"warn","message":"Login failed: User not found","rollNumber":"string","service":"exam-portal-api","timestamp":"2025-04-14 11:19:58"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:49:58 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 401 31 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:19:58"}
+{"email":"user@example.com","level":"info","message":"Attempting to register new user","role":"student","service":"exam-portal-api","timestamp":"2025-04-14 11:20:10"}
+{"level":"info","message":"User registered successfully","role":"student","service":"exam-portal-api","timestamp":"2025-04-14 11:20:10","userId":"b764b5c6-efc5-4f11-974a-0c9f981b1a4c"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:50:10 +0000] \"POST /api/v1/auth/register HTTP/1.1\" 201 373 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:20:10"}
+{"error":"Unexpected token ']', ...\"\", \n      ],\n      \"\"... is not valid JSON","level":"error","message":"Unhandled error:","service":"exam-portal-api","stack":"SyntaxError: Unexpected token ']', ...\"\", \n      ],\n      \"\"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at parse (/home/saurabh254/codes/assignment/server/node_modules/body-parser/lib/types/json.js:92:19)\n    at /home/saurabh254/codes/assignment/server/node_modules/body-parser/lib/read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)\n    at invokeCallback (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:238:16)\n    at done (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:227:7)\n    at IncomingMessage.onEnd (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:287:7)\n    at IncomingMessage.emit (node:events:507:28)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:90:21)","timestamp":"2025-04-14 11:21:42"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:52:52 +0000] \"POST /api/v1/exams HTTP/1.1\" 403 25 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:22:52"}
+{"level":"info","message":"Attempting user login","rollNumber":"string","service":"exam-portal-api","timestamp":"2025-04-14 11:23:07"}
+{"level":"info","message":"User logged in successfully","role":"student","service":"exam-portal-api","timestamp":"2025-04-14 11:23:07","userId":"b764b5c6-efc5-4f11-974a-0c9f981b1a4c"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:53:07 +0000] \"POST /api/v1/auth/login HTTP/1.1\" 200 373 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:23:07"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:53:24 +0000] \"POST /api/v1/exams HTTP/1.1\" 400 509 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:23:24"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:54:08 +0000] \"POST /api/v1/exams HTTP/1.1\" 400 337 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:24:08"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:54:28 +0000] \"POST /api/v1/exams HTTP/1.1\" 400 176 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:24:28"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:54:43 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:24:43"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 11:27:24"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 11:27:24"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 11:27:24"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 11:27:46"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 11:27:46"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 11:27:46"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:05:57:59 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:27:59"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 11:29:28"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 11:29:28"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 11:29:28"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 11:30:26"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 11:30:26"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 11:30:26"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 11:30:48"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 11:30:48"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 11:30:48"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 11:31:06"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 11:31:06"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 11:31:06"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:06:01:11 +0000] \"POST /api/v1/exams HTTP/1.1\" 400 115 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:31:11"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:06:13:34 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 11:43:34"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:08:38"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:08:38"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:08:38"}
+{"email":"user@example.com","level":"info","message":"Attempting to register new user","role":"student","service":"exam-portal-api","timestamp":"2025-04-14 12:08:46"}
+{"level":"info","message":"User registered successfully","role":"student","service":"exam-portal-api","timestamp":"2025-04-14 12:08:47","userId":"2305e24f-5d04-4874-ae25-4f58a75200c1"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:06:38:47 +0000] \"POST /api/v1/auth/register HTTP/1.1\" 201 373 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:08:47"}
+{"email":"user@example.com","level":"info","message":"Attempting to register new user","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-14 12:09:00"}
+{"level":"warn","message":"Registration failed: User already exists","rollNumber":"string","service":"exam-portal-api","timestamp":"2025-04-14 12:09:01"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:06:39:01 +0000] \"POST /api/v1/auth/register HTTP/1.1\" 400 31 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:09:01"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:15:11"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:15:11"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:15:11"}
+{"email":"user@example.com","level":"info","message":"Attempting to register new user","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-14 12:15:12"}
+{"level":"info","message":"User registered successfully","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-14 12:15:13","userId":"859392ae-ccab-4d63-998d-460479d604df"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:06:45:13 +0000] \"POST /api/v1/auth/register HTTP/1.1\" 201 373 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:15:13"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:06:47:58 +0000] \"POST /api/v1/exams HTTP/1.1\" 400 118 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:17:58"}
+{"error":"Expected ',' or ']' after array element in JSON at position 433 (line 18 column 11)","level":"error","message":"Unhandled error:","service":"exam-portal-api","stack":"SyntaxError: Expected ',' or ']' after array element in JSON at position 433 (line 18 column 11)\n    at JSON.parse (<anonymous>)\n    at parse (/home/saurabh254/codes/assignment/server/node_modules/body-parser/lib/types/json.js:92:19)\n    at /home/saurabh254/codes/assignment/server/node_modules/body-parser/lib/read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)\n    at invokeCallback (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:238:16)\n    at done (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:227:7)\n    at IncomingMessage.onEnd (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:287:7)\n    at IncomingMessage.emit (node:events:507:28)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:90:21)","timestamp":"2025-04-14 12:18:17"}
+{"error":"Expected ':' after property name in JSON at position 198 (line 8 column 11)","level":"error","message":"Unhandled error:","service":"exam-portal-api","stack":"SyntaxError: Expected ':' after property name in JSON at position 198 (line 8 column 11)\n    at JSON.parse (<anonymous>)\n    at parse (/home/saurabh254/codes/assignment/server/node_modules/body-parser/lib/types/json.js:92:19)\n    at /home/saurabh254/codes/assignment/server/node_modules/body-parser/lib/read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)\n    at invokeCallback (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:238:16)\n    at done (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:227:7)\n    at IncomingMessage.onEnd (/home/saurabh254/codes/assignment/server/node_modules/raw-body/index.js:287:7)\n    at IncomingMessage.emit (node:events:507:28)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:90:21)","timestamp":"2025-04-14 12:18:45"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:06:48:57 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:18:57"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:44:54"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:44:54"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:44:54"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:15:00 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:45:00"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:48:10"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:48:10"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:48:10"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:18:18 +0000] \"POST /api/v1/exams HTTP/1.1\" 403 25 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:48:18"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:49:16"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:49:16"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:49:16"}
+{"email":"user@example.com","level":"info","message":"Attempting to register new user","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-14 12:51:29"}
+{"level":"info","message":"User registered successfully","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-14 12:51:29","userId":"8a3de1f9-580b-4cf0-b99e-5f495f0677fb"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:21:29 +0000] \"POST /api/v1/auth/register HTTP/1.1\" 201 373 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:51:29"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:21:47 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:51:47"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:52:22"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:52:22"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:52:22"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:52:33"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:52:33"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:52:33"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:22:36 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:52:36"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:52:49"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:52:49"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:52:49"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:52:50"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:52:50"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:52:50"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:52:52"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:52:52"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:52:52"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:53:17"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:53:17"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:53:17"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:53:29"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:53:29"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:53:29"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:23:31 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:53:31"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:54:18"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:54:18"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:54:18"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:54:18"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:54:18"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:54:18"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:56:27"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:56:27"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:56:27"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 12:56:49"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 12:56:49"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 12:56:49"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:26:52 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 12:56:52"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:03:28"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:03:28"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:03:28"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:33:31 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:03:31"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:04:50"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:04:50"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:04:50"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:05:42"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:05:42"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:05:42"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:35:45 +0000] \"POST /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:05:45"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:06:56"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:06:56"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:06:56"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:36:57 +0000] \"POST /api/v1/exams HTTP/1.1\" 201 1177 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:06:57"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:09:32"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:09:32"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:09:32"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:10:07"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:10:07"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:10:07"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:10:53"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:10:53"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:10:53"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:40:58 +0000] \"POST /api/v1/exams HTTP/1.1\" 401 26 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:10:58"}
+{"email":"user@example.com","level":"info","message":"Attempting to register new user","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-14 13:11:03"}
+{"level":"info","message":"User registered successfully","role":"teacher","service":"exam-portal-api","timestamp":"2025-04-14 13:11:03","userId":"d999eb27-9353-404d-ab9f-e7ca37c8f6b9"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:41:03 +0000] \"POST /api/v1/auth/register HTTP/1.1\" 201 373 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:11:03"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:41:19 +0000] \"POST /api/v1/exams HTTP/1.1\" 201 1095 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:11:19"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:42:21 +0000] \"GET /api/v1/exams HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:12:21"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:15:05"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:15:05"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:15:05"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:45:07 +0000] \"GET /api/v1/exams HTTP/1.1\" 200 312 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:15:07"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:49:58 +0000] \"GET /api/v1/exams/f6b5e98a-b72b-4b25-9b13-ced6c1953aab HTTP/1.1\" 500 33 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:19:58"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:20:39"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:20:39"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:20:39"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:50:42 +0000] \"GET /api/v1/exams/f6b5e98a-b72b-4b25-9b13-ced6c1953aab HTTP/1.1\" 200 1109 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:20:42"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:20:53"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:20:53"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:20:53"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [14/Apr/2025:07:50:56 +0000] \"GET /api/v1/exams/f6b5e98a-b72b-4b25-9b13-ced6c1953aab HTTP/1.1\" 200 1095 \"http://localhost:5000/api-docs/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\"","service":"exam-portal-api","timestamp":"2025-04-14 13:20:56"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:29:28"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:29:28"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:29:28"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 13:44:28"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 13:44:28"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 13:44:28"}
+{"level":"info","message":"Server running on port 5000","service":"exam-portal-api","timestamp":"2025-04-14 18:14:48"}
+{"level":"info","message":"API Documentation available at http://localhost:5000/api-docs","service":"exam-portal-api","timestamp":"2025-04-14 18:14:48"}
+{"level":"info","message":"API Base URL: http://localhost:5000/api/v1","service":"exam-portal-api","timestamp":"2025-04-14 18:14:48"}

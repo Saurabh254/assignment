@@ -8,40 +8,47 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
-  role      String   @default("student")
-  class     String?
-  rollNumber String? @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
-  createdExams Exam[]        @relation("CreatedExams")
+  id           String       @id @default(uuid())
+  name         String
+  email        String       @unique
+  password     String
+  role         String       @default("student")
+  class        String?
+  rollNumber   String?      @unique
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  createdExams Exam[]       @relation("CreatedExams")
   examResults  ExamResult[]
 }
 
 model Exam {
-  id          String   @id @default(uuid())
-  title       String
-  subject     String
-  description String?
-  duration    Int      // in minutes
-  totalMarks  Int
-  date        DateTime
-  startTime   String
-  endTime     String
-  class       String
-  status      String   @default("upcoming")
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String       @id @default(uuid())
+  title         String
+  subject       String
+  description   String?
+  duration      Int
+  totalMarks    Int
+  startDateTime DateTime
+  class         String
+  status        String       @default("upcoming")
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  createdById   String
+  questions     Json
+  createdBy     User         @relation("CreatedExams", fields: [createdById], references: [id])
+  results       ExamResult[]
+  Question      Question[]
+}
 
-  // Relations
-  createdBy   User         @relation("CreatedExams", fields: [createdById], references: [id])
-  createdById String
-  results     ExamResult[]
+model Question {
+  id            String   @id @default(uuid())
+  examId        String
+  question      String
+  options       String[]
+  correctAnswer Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  exam          Exam     @relation(fields: [examId], references: [id])
 }
 
 model ExamResult {
@@ -55,10 +62,12 @@ model ExamResult {
   submittedAt DateTime @default(now())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
-  // Relations
-  exam        Exam   @relation(fields: [examId], references: [id])
   examId      String
-  student     User   @relation(fields: [studentId], references: [id])
   studentId   String
+  exam        Exam     @relation(fields: [examId], references: [id])
+  student     User     @relation(fields: [studentId], references: [id])
+}
+
+enum crdb_internal_region {
+  aws_ap_south_1 @map("aws-ap-south-1")
 }
